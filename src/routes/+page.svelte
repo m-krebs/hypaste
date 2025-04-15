@@ -25,7 +25,7 @@
 		<div class="flex gap-2 rounded-lg border p-2">
 			<Input
 				id="hypaste-input"
-				placeholder="Link of HyPaste..."
+				placeholder="Link of the HyPaste..."
 				onkeydown={(event) => {
 					if (event.key === 'Enter') gotoHyPaste();
 				}}
