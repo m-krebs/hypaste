@@ -34,7 +34,7 @@
 			<Button onclick={gotoHyPaste}><Send /></Button>
 		</div>
 		<Button onclick={() => window.location.assign('/new')} class="w-full p-6"
-			>Or create a new one</Button
+			>Or create new</Button
 		>
 	</div>
 </div>
