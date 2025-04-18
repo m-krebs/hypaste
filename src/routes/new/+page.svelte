@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { Textarea } from '$lib/components/ui/textarea';
 	import * as ToggleGroup from '$lib/components/ui/toggle-group';
-	import CodeMirror from '$lib/components/CodeMirror.svelte';
-	import NewCodeMirror from '$lib/components/NewCodeMirror.svelte';
+	import Editor from '$lib/components/Editor.svelte';
 
 	let pasteContent = $state('');
 	let timeToKeep = $state('5m');
@@ -17,6 +16,7 @@
 	}
 </script>
 
+<Editor />
 <form method="POST">
 	<Textarea bind:value={pasteContent} />
 	<div class="w-max rounded-lg border p-2">
@@ -28,5 +28,4 @@
 			<ToggleGroup.Item value="24h">24h</ToggleGroup.Item>
 		</ToggleGroup.Root>
 	</div>
-	<CodeMirror />
 </form>
