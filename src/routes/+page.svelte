@@ -13,14 +13,7 @@
 	});
 </script>
 
-<div class="flex p-6">
-	<h1 class="text-2xl">Welcome to HyPaste</h1>
-	<a href="https://m-krebs.dev" target="_blank" class="ml-2 align-text-bottom text-gray-500"
-		>by m-krebs</a
-	>
-</div>
-
-<div class="flex h-screen w-full items-center justify-center">
+<div class="m-auto h-full w-fit -translate-y-12 items-center justify-center align-bottom">
 	<div class="flex flex-col gap-2 rounded-xl border border-dashed border-white p-10">
 		<div class="flex gap-2 rounded-lg border p-2">
 			<Input
@@ -33,8 +26,6 @@
 			/>
 			<Button onclick={gotoHyPaste}><Send /></Button>
 		</div>
-		<Button onclick={() => window.location.assign('/new')} class="w-full p-6"
-			>Or create new</Button
-		>
+		<Button onclick={() => window.location.assign('/new')} class="w-full p-6">Or create new</Button>
 	</div>
 </div>
