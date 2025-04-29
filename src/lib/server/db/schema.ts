@@ -1,11 +1,12 @@
 import { sqliteTable, text, integer, blob, index } from 'drizzle-orm/sqlite-core';
+import { createId } from '@paralleldrive/cuid2'
 
 export const author = sqliteTable('author', {
 	id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
 })
 
 export const paste = sqliteTable('paste', {
-	id: text('id').primaryKey(),
+	id: text('id').$defaultFn(() => createId()),
 	created: integer('created', { mode: 'timestamp_ms' }),
 	deleteAt: integer('deleteAt', { mode: 'timestamp_ms' }),
 	authorId: integer('author_id').references(() => author.id),

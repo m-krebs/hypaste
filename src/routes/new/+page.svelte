@@ -2,7 +2,6 @@
 	import { enhance } from '$app/forms';
 	import TimeToKeepToggle from '$lib/components/TimeToKeepToggle.svelte';
 	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
 	import CodeMirror from 'svelte-codemirror-editor';
 
 	let pasteContent = $state('');
@@ -15,8 +14,7 @@
 		<TimeToKeepToggle bind:value={ttk} />
 		<input type="hidden" name="ttk" bind:value={ttk} />
 	</div>
-	<Button>Create</Button>
+	<Button type="submit">Create</Button>
 	<CodeMirror bind:value={pasteContent} />
-	<Input name="textcontent" placeholder="Type text..." />
-	<Button type="submit">Submit</Button>
+	<input type="hidden" name="paste" bind:value={pasteContent} />
 </form>
