@@ -8,7 +8,7 @@
 	let ttk = $state('5m');
 </script>
 
-<form method="POST" use:enhance>
+<form method="POST">
 	<div class="w-max rounded-lg border p-2">
 		<p class="text-center">Delete after</p>
 		<TimeToKeepToggle bind:value={ttk} />
