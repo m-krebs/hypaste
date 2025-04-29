@@ -1,31 +1,22 @@
 <script lang="ts">
-	import { Textarea } from '$lib/components/ui/textarea';
-	import * as ToggleGroup from '$lib/components/ui/toggle-group';
-	import Editor from '$lib/components/Editor.svelte';
+	import { enhance } from '$app/forms';
+	import TimeToKeepToggle from '$lib/components/TimeToKeepToggle.svelte';
+	import { Button } from '$lib/components/ui/button';
+	import { Input } from '$lib/components/ui/input';
+	import CodeMirror from 'svelte-codemirror-editor';
 
 	let pasteContent = $state('');
-	let timeToKeep = $state('5m');
-	let lastTTK = $state('5m');
-
-	function toggleUpdate(event: any) {
-		if (event === '') {
-			timeToKeep = lastTTK;
-		} else {
-			lastTTK = timeToKeep;
-		}
-	}
+	let ttk = $state('5m');
 </script>
 
-<Editor />
-<form method="POST">
-	<Textarea bind:value={pasteContent} />
+<form method="POST" use:enhance>
 	<div class="w-max rounded-lg border p-2">
 		<p class="text-center">Delete after</p>
-		<ToggleGroup.Root type="single" bind:value={timeToKeep} onValueChange={toggleUpdate}>
-			<ToggleGroup.Item value="5m">5m</ToggleGroup.Item>
-			<ToggleGroup.Item value="15m">15m</ToggleGroup.Item>
-			<ToggleGroup.Item value="1h">1h</ToggleGroup.Item>
-			<ToggleGroup.Item value="24h">24h</ToggleGroup.Item>
-		</ToggleGroup.Root>
+		<TimeToKeepToggle bind:value={ttk} />
+		<input type="hidden" name="ttk" bind:value={ttk} />
 	</div>
+	<Button>Create</Button>
+	<CodeMirror bind:value={pasteContent} />
+	<Input name="textcontent" placeholder="Type text..." />
+	<Button type="submit">Submit</Button>
 </form>
