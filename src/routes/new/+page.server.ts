@@ -8,10 +8,10 @@ export const actions = {
 		// TODO: create new hypaste
 		const data = await request.formData();
 		console.log(data);
-		await db.insert(author).values({}).onConflictDoNothing();
 
-		const now = Date.now();
-		const msToDeletion = 0;
+		await db.insert(author).values({ id: 1 }).onConflictDoNothing(); // TODO: remove me
+
+		const now = new Date();
 
 		const parsed = parseDurationString(data.get('ttk')?.toString() || '5m');
 
@@ -35,7 +35,7 @@ export const actions = {
 			authorId: 1,
 			content: data.get('paste'),
 			created: now,
-			deleteAt: now + deleteInMs
+			deleteAt: new Date(now.getTime() + deleteInMs)
 		});
 	}
 } satisfies Actions;
